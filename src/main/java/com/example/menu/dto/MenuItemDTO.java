@@ -15,14 +15,10 @@ public class MenuItemDTO {
     @NotNull
     private String name;
     private String ingredients;
-    @NotNull
     private double originalPrice;
-
-    @NotNull
     private double currentPrice;
-
-    @NotNull
     private boolean available = true;
 
     private int wait;
+    private int itemType;
 }

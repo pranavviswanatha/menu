@@ -33,4 +33,7 @@ public class MenuItem {
     @Column(name = "wait")
     private int wait;
 
+    @Column(name = "item_type")
+
+
 }
