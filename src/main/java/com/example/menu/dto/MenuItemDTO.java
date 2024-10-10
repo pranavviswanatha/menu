@@ -18,7 +18,6 @@ public class MenuItemDTO {
     private double originalPrice;
     private double currentPrice;
     private boolean available = true;
-
     private int wait;
-    private int itemType;
+
 }

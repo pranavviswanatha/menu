@@ -1,11 +1,12 @@
 package com.example.menu.model;
 
+import com.example.menu.enums.ItemType;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @Entity
-@Table(name = "MenuItem")
+@Table(name = "MenuItem", indexes = {@Index(name = "i1_menuitem", columnList = "item_type")})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -34,6 +35,7 @@ public class MenuItem {
     private int wait;
 
     @Column(name = "item_type")
+    private ItemType itemType;
 
 
 }
