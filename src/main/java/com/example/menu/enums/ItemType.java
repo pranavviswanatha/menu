@@ -23,6 +23,17 @@ public enum ItemType {
         return sectionId;
     }
 
+    public static ItemType getValue(int i) {
+        switch (i) {
+            case 1: return APPETIZERS;
+            case 2: return ENTREES;
+            case 3: return DESSERTS;
+            case 4: return BEVERAGES;
+            case 5: return SIDES;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return sectionName + " (ID: " + sectionId + ")";
