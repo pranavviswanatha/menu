@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Food Ordering Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <nav>
+        <h1>Foodie</h1>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="menu">
+        <h2>Menu</h2>
+        <div id="menu"></div>
+
+        <script>
+            const apiUrl = window.location.origin + '/api/menu'; // Use current origin
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const menuDiv = document.getElementById('menu');
+                    data.forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'menu-item';
+                        itemDiv.innerHTML = `
+                            <h3>${item.name}</h3>
+                            <p>${item.description}</p>
+                            <button onclick="addToOrder('${item.name}')">Add to Order</button>
+                        `;
+                        menuDiv.appendChild(itemDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        </script>
+        <!-- Add more menu items as needed -->
+    </section>
+
+    <section id="order">
+        <h2>Your Order</h2>
+        <ul id="order-list"></ul>
+        <button id="place-order" onclick="placeOrder()">Place Order</button>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@foodie.com</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Foodie. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

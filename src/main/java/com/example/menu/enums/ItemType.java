@@ -1,11 +1,11 @@
 package com.example.menu.enums;
 
 public enum ItemType {
-    APPETIZERS("Appetizers", 1),
-    ENTREES("Entrees", 2),
-    DESSERTS("Desserts", 3),
-    BEVERAGES("Beverages", 4),
-    SIDES("Sides", 5);
+    Appetizer("Appetizer", 1),
+    Entree("Entree", 2),
+    Dessert("Dessert", 3),
+    Beverage("Beverage", 4),
+    Side("Side", 5);
 
     private final String sectionName;
     private final int sectionId;
@@ -25,11 +25,11 @@ public enum ItemType {
 
     public static ItemType getValue(int i) {
         switch (i) {
-            case 1: return APPETIZERS;
-            case 2: return ENTREES;
-            case 3: return DESSERTS;
-            case 4: return BEVERAGES;
-            case 5: return SIDES;
+            case 1: return Appetizer;
+            case 2: return Entree;
+            case 3: return Dessert;
+            case 4: return Beverage;
+            case 5: return Side;
         }
         return null;
     }

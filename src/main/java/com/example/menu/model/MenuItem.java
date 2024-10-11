@@ -6,7 +6,7 @@ import lombok.*;
 
 @Data
 @Entity
-@Table(name = "MenuItem", indexes = {@Index(name = "i1_menuitem", columnList = "item_type")})
+@Table(name = "menuitem", indexes = {@Index(name = "i1_menuitem", columnList = "itemtype")})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -34,6 +34,7 @@ public class MenuItem {
     @Column(name = "wait")
     private int wait;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "item_type")
     private ItemType itemType;
 

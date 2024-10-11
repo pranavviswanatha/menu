@@ -1,12 +1,18 @@
 package com.example.menu.dto;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
+@Getter
+@Setter
 public class OrderDTO {
 
-    private boolean status;
-    private int tokenId;
-    private String message;
+    private int customerId;
+    private Map<Integer, Integer> orderInfo;
+    private double amountPaid;
 
 }

@@ -4,5 +4,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class TokenDTO {
-    private 
+
+    private boolean status;
+    private int tokenId;
+    private String message;
+
 }
