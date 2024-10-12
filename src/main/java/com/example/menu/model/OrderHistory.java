@@ -3,11 +3,12 @@ package com.example.menu.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Map;
 import java.util.Objects;
 
 @Data
 @Entity
-@Table(name = "Order_History")
+@Table(name = "Order_History", indexes = {@Index(name = "i1_order_history", columnList = "customer_id")})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -28,5 +29,12 @@ public class OrderHistory {
 
     @Column(name = "rating")
     private int rating; // Assuming the rating is from 1 to 5
+
+    public void setOrderContents(Map<Integer, Integer> orderInfo) {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<Integer, Integer> entry : orderInfo.entrySet())
+            sb.append(entry.getKey() + ":" + entry.getValue() + ",");
+        orderContents = sb.toString();
+    }
 
 }

@@ -6,7 +6,7 @@ import lombok.*;
 
 @Data
 @Entity
-@Table(name = "menuitem", indexes = {@Index(name = "i1_menuitem", columnList = "itemtype")})
+@Table(name = "menuitem", indexes = {@Index(name = "i1_menuitem", columnList = "item_type")})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

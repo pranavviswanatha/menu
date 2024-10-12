@@ -3,10 +3,14 @@ package com.example.menu.controller;
 import com.example.menu.dto.MenuItemDTO;
 //import com.example.menu.dto.OrderDTO;
 //import com.example.menu.dto.TokenDTO;
+import com.example.menu.dto.OrderDTO;
+import com.example.menu.dto.TokenDTO;
 import com.example.menu.enums.ItemType;
 import com.example.menu.model.MenuItem;
+import com.example.menu.model.OrderHistory;
 import com.example.menu.repo.Menu;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,9 +39,14 @@ public class OrderController {
         return listDto;
     }
 
-    /*@PostMapping("/placeOrder")
-    public TokenDTO placeOrder (@RequestBody OrderDTO) {
-
-    }*/
+    @PostMapping("/placeOrder")
+    public TokenDTO placeOrder (@RequestBody OrderDTO dto) {
+        OrderHistory orderHistory = new OrderHistory();
+        orderHistory.setCustomerId((long) Math.floor(Math.random()));
+        orderHistory.setPrice(dto.getAmountPaid());
+        orderHistory.setOrderContents(dto.getOrderInfo());
+        orderHistory.setRating(3);
+        return new TokenDTO(orderHistory);
+    }
 
 }
