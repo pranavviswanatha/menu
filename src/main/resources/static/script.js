@@ -10,7 +10,7 @@ function updateOrderDisplay() {
     const orderListElement = document.getElementById('order-list');
     orderListElement.innerHTML = '';
 
-    orderList.forEach(item => {
+    orderMap.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
         orderListElement.appendChild(li);
@@ -52,7 +52,6 @@ function placeOrder() {
     });
 
 
-    alert("Order placed successfully!\n" + orderList.join(', '));
 }
 
 function getPrice(priceCurr, priceOrig) {

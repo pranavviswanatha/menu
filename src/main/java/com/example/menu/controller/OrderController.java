@@ -12,6 +12,7 @@ import com.example.menu.repo.Menu;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -39,14 +40,14 @@ public class OrderController {
         return listDto;
     }
 
-    @PostMapping("/placeOrder")
-    public TokenDTO placeOrder (@RequestBody OrderDTO dto) {
+    @PostMapping(value = "/placeOrder", produces = "application/json")
+    public ResponseEntity<TokenDTO> placeOrder (@RequestBody OrderDTO dto) {
         OrderHistory orderHistory = new OrderHistory();
         orderHistory.setCustomerId((long) Math.floor(Math.random()));
         orderHistory.setPrice(dto.getAmountPaid());
         orderHistory.setOrderContents(dto.getOrderInfo());
         orderHistory.setRating(3);
-        return new TokenDTO(orderHistory);
+        return ResponseEntity.ok(new TokenDTO(orderHistory));
     }
 
 }
