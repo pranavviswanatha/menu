@@ -24,3 +24,10 @@ function placeOrder() {
 
     alert("Order placed successfully!\n" + orderList.join(', '));
 }
+
+function getPrice(priceCurr, priceOrig) {
+    if(priceCurr === priceOrig)
+        return priceOrig;
+    else
+        return `<del>${priceOrig}</del> ${priceCurr}`;
+}

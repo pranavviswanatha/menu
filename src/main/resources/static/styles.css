@@ -40,6 +40,11 @@ main {
     margin-bottom: 10px;
 }
 
+.right-aligned-line {
+    text-align: right; /* Aligns text to the right */
+    margin-top: 10px; /* Adds some space above the new line */
+}
+
 footer {
     text-align: center;
     padding: 10px 0;

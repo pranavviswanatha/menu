@@ -28,7 +28,7 @@
         <div id="menu"></div>
 
         <script>
-            const apiUrl = window.location.origin + '/api/menu'; // Use current origin
+            const apiUrl = window.location.origin + '/api/getItems'; // Use current origin
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
@@ -36,17 +36,19 @@
                     data.forEach(item => {
                         const itemDiv = document.createElement('div');
                         itemDiv.className = 'menu-item';
+                        const price = getPrice(item.currentPrice,item.originalPrice)
                         itemDiv.innerHTML = `
                             <h3>${item.name}</h3>
-                            <p>${item.description}</p>
-                            <button onclick="addToOrder('${item.name}')">Add to Order</button>
+                            <p>${item.ingredients}</p>
+                            <button onclick="addToOrder('${item.id}')">Add to Order</button>
+                            <br>
+                            <div class="right-aligned-line">${price}</div>
                         `;
                         menuDiv.appendChild(itemDiv);
                     });
                 })
                 .catch(error => console.error('Error fetching data:', error));
         </script>
-        <!-- Add more menu items as needed -->
     </section>
 
     <section id="order">
