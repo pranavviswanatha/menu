@@ -41,7 +41,7 @@ function placeOrder() {
         body: JSON.stringify(data),  // Convert the data object to a JSON string
     })
     .then(response => {
-        if (!response.success) {
+        if (!response.ok) {
             throw new Error(response.message);
         }
         return response.json();  // Parse JSON response
