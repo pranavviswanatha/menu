@@ -24,11 +24,13 @@ function placeOrder() {
     }
 
         // Data to be sent in the POST request
+    const jsonString = JSON.stringify([...orderMap]);
     const data = {
         customerId: '13',
         price: '11.99',
-        orderInfo: orderMap,
+        orderInfo: jsonString,
     };
+    console.log(jsonString);
 
     // Making the POST request using fetch
     fetch(window.location.origin + '/api/placeOrder', {
@@ -39,8 +41,8 @@ function placeOrder() {
         body: JSON.stringify(data),  // Convert the data object to a JSON string
     })
     .then(response => {
-        if (!response.data.success) {
-            throw new Error(response.data.message);
+        if (!response.success) {
+            throw new Error(response.message);
         }
         return response.json();  // Parse JSON response
     })

@@ -12,7 +12,7 @@ import java.util.Map;
 public class OrderDTO {
 
     private int customerId;
-    private Map<Integer, Integer> orderInfo;
+    private String orderInfo;
     private double amountPaid;
 
 }

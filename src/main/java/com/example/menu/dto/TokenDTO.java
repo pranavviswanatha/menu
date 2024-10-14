@@ -3,6 +3,8 @@ package com.example.menu.dto;
 import com.example.menu.model.OrderHistory;
 import lombok.RequiredArgsConstructor;
 
+import java.util.UUID;
+
 @RequiredArgsConstructor
 public class TokenDTO {
 
@@ -14,6 +16,10 @@ public class TokenDTO {
         status = true;
         tokenId = (int) orderHistory.getOrderId();
         message = "Ordered placed successfully!!!";
+    }
+
+    private String generateToken() {
+        return UUID.randomUUID().toString();
     }
 
 }

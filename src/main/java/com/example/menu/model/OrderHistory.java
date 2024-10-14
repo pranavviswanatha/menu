@@ -30,11 +30,4 @@ public class OrderHistory {
     @Column(name = "rating")
     private int rating; // Assuming the rating is from 1 to 5
 
-    public void setOrderContents(Map<Integer, Integer> orderInfo) {
-        StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Integer, Integer> entry : orderInfo.entrySet())
-            sb.append(entry.getKey() + ":" + entry.getValue() + ",");
-        orderContents = sb.toString();
-    }
-
 }

@@ -9,9 +9,11 @@ import com.example.menu.enums.ItemType;
 import com.example.menu.model.MenuItem;
 import com.example.menu.model.OrderHistory;
 import com.example.menu.repo.Menu;
+import com.example.menu.repo.OrderHist;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,9 @@ public class OrderController {
 
     @Autowired
     Menu menu;
+
+    @Autowired
+    OrderHist orderHist;
 
     @GetMapping("/getItems")
     public List<MenuItemDTO> getItems (@RequestParam(required = true, defaultValue = "0") int iType) {
@@ -41,13 +46,14 @@ public class OrderController {
     }
 
     @PostMapping(value = "/placeOrder", produces = "application/json")
-    public ResponseEntity<TokenDTO> placeOrder (@RequestBody OrderDTO dto) {
+    public ResponseEntity<OrderDTO> placeOrder (@RequestBody OrderDTO dto) {
         OrderHistory orderHistory = new OrderHistory();
         orderHistory.setCustomerId((long) Math.floor(Math.random()));
         orderHistory.setPrice(dto.getAmountPaid());
         orderHistory.setOrderContents(dto.getOrderInfo());
         orderHistory.setRating(3);
-        return ResponseEntity.ok(new TokenDTO(orderHistory));
+        orderHist.save(orderHistory);
+        return new ResponseEntity<OrderDTO>(dto, HttpStatusCode.valueOf(200));
     }
 
 }
